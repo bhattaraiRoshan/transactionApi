@@ -1,20 +1,27 @@
 import express from "express";
 import cors from "cors"
+import { connectMongo } from "./src/dbConfig/dbConfig.js";
 const PORT = process.env.PORT || 8000;
 
 const app = express();
 
 // Middleware
-
-app.use(express.json());
 app.use(cors());
+
+const corsOptions = {
+    credentials: true,
+    origin:true,
+    
+}
+app.use(cors(corsOptions));
+app.use(express.json());
 
 
 // database
 
 connectMongo();
 import userRouter from "./src/router/userRouter.js";
-import { connectMongo } from "./src/dbConfig/dbConfig.js";
+
 import transactionRouter from "./src/router/transactionRouter.js";
 // router
 app.use("/api/user", userRouter)
