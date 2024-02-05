@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 8000;
 const app = express();
 
 // Middleware
-app.use(cors());
+
 
 const corsOptions = {
     credentials: true,
